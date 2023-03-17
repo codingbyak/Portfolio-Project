@@ -13,16 +13,126 @@ HEADER
 */
 
 header {
-    display: grid;
-    grid-template-columns: 4fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 10px 10px 30px 10px
 }
-header .title {
-    grid-column: 1 / 3;
+
+.logo img {
+    min-height: 100px;
+    min-width: 100px;
+    border: 1px solid black;
+
 }
-header nav {
-    grid-column: 3 / 5;
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.title{
+    margin-left: 10px;
+}
+
+nav {
+    align-self: flex-end;
 }
 
 nav li {
     display: inline;
+}
+
+/*
+==========================
+TYPOGRAPHY
+==========================
+*/
+
+h1 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 36px;
+}
+
+p {
+    margin: 10px;
+}
+
+
+/*
+==========================
+PERSONAL SUMMARY
+==========================
+*/
+
+.about {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin: 10px;
+}
+
+.profile {
+    border: 1px solid black;
+    min-width: 250px;
+    min-height: 350px;
+    margin: 10px;
+}
+
+.summary {
+    margin: 10px;
+}
+
+/*
+==========================
+PROJECTS
+==========================
+*/
+
+.all-projects {
+    display: flex;
+    justify-content: justify;
+    margin: 10px;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    margin: 10px;
+}
+.project img {
+    min-width: 200px;
+    min-height: 200px;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+/*
+==========================
+FOOTER
+==========================
+*/
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+.social-media img {
+    max-height: 30px;
+    max-width: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    border: 1px solid black;
+    margin: 10px;
 }
