@@ -1,0 +1,21 @@
+
+
+body {
+    background-color: green;
+    color: goldenrod;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    margin-bottom: 20vh;
+}
+.table {
+    width: 80vw;
+    height: 30vh;
+    border: 50px solid red;
+    border-radius: 25%;
+}

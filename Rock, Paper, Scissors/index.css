@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+    list-style: none;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+body {
+    width: 90vw;
+    background-color: #207178;
+}
+
+
+.game {
+    background-color: #FD9769;
+    width: 100vw;
+    margin: 0;
+    min-height: 50vh;
+}
+
+.matchup {
+    display: inline-block;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.matchup img {
+    margin: 10px;
+    border-radius: 20%;
+    width: 45vw;
+    padding: 0;
+}
+
+.result-section {
+    min-height: 100px;
+    max-height: 100px;
+    width: 100vw;
+    padding-bottom: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+div {
+    margin: 10px;
+    display: inline-block;
+}
+
+button img {
+    max-height: 200px;
+    max-width: 200px;
+    box-shadow: 4px 4px;
+}
+
+button:active {
+    box-shadow: none;
+}
+
+button img:active {
+    max-height: 180px;
+    max-width: 180px;
+}
+
+@keyframes playerShoot {
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(-30deg);}
+    100% {transform: rotate(0deg);}
+}
+
+@keyframes computerShoot {
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(30deg);}
+    100% {transform: rotate(0deg);}
+}
+
+.player-choice {
+    animation: playerShoot 1s 4;
+}
+
+.comp-choice {
+    animation: computerShoot 1s 4;
+}
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Rock, Paper, Scissors, SHOOT!</title>
+</head>
+<body>
+    <!--HEADER-->
+
+    <header>
+        <h1>Rock, Paper or Scissors</h1>
+    </header>
+
+    <!--PLAYER CHOICE-->
+
+    <section class="player-select">
+        <h2>Make Your Pick!</h2>
+        <button onclick="rock()"><img src="./images/rock.jpg" alt="rock"></button>
+        <button onclick="paper()"><img src="./images/paper.jpg" alt="paper"></button>
+        <button onclick="scissors()"><img src="./images/scissors.jpg" alt=""></button>
+    </section>
+    
+    <!--GAME SECTION-->
+
+    <section class="game">
+        <div class="result-section">
+            <h2 id="countdown"></h2>
+            <p id="results"></p>
+        </div>
+        <div class="matchup">
+            <span class="player">
+                <img id="player-choice" class="" src="./images/rps-rock.jpg" alt="">
+            </span>
+            <span class="computer">
+                <img id="comp-choice" class="" src="./images/comp-rock.jpg" alt="">
+            </span>
+        </div>
+
+    </section>
+    
+    
+    <script src="index.js"></script>
+</body>
+</html>
