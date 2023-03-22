@@ -11,11 +11,39 @@ body {
 }
 
 header {
-    margin-bottom: 20vh;
+    margin-bottom: 20px;
 }
 .table {
     width: 80vw;
     height: 30vh;
     border: 50px solid red;
     border-radius: 25%;
+}
+
+.table img {
+    border: 1px solid black;
+    border-radius: 5px;
+    min-height: 100px;
+    min-width: 50px;
+    background-color: white;
+}
+
+#dealerCards div {
+    border: 1px solid black;
+    border-radius: 5px;
+    min-height: 100px;
+    min-width: 50px;
+    max-height: 100px;
+    max-width: 50px;
+    background-color: white;
+    display: inline-block;
+}
+
+#sums {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.chips {
+    margin-top: 50px;
 }

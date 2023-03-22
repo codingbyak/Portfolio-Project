@@ -1,3 +1,8 @@
+let playerCards = document.getElementById('playerCards')
+let dealerCards = document.getElementById('dealerCards')
+let playerSumEl = document.getElementById('playerSum')
+let dealerSumEl = document.getElementById('dealerSum')
+let resultsEl = document.getElementById('resultsEl')
 let cardSuits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
 let cardFaces = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
 let deck = [];
@@ -10,10 +15,9 @@ let dealerHand = [];
 let playerValues = [];
 let dealerValues = [];
 
-
 for (let i = 0; i < cardSuits.length; i++) {
     for (let j = 0; j < cardFaces.length; j++) {
-        deck.push(cardFaces[j] + ' of ' + cardSuits[i])
+        deck.push(cardFaces[j] + '_' + cardSuits[i])
     }
 }
 
@@ -63,7 +67,6 @@ function sumDealerHand() {
     return dealerValues.reduce((x, y) => x + y, 0);
 }
 
-
 function deal() {
     isAlive = true;
 // RANDOMIZING CARDS
@@ -97,7 +100,10 @@ function deal() {
     dealerValues.push(getValue(dealerCardOne))
     dealerValues.push(getValue(dealerCardTwo))
 
-//PLAYER AND DEALER SUMS
+    playerCards.innerHTML += `<img src="./images/${playerCardOne}.jpg"/>`
+    playerCards.innerHTML += `<img src="./images/${playerCardTwo}.jpg"/>`
+    dealerCards.innerHTML += `<img src="./images/${dealerCardOne}.jpg"/>`
+    dealerCards.innerHTML += `<div></div>`
 
     playerSum = sumPlayerHand()
     dealerSum = sumDealerHand()
@@ -107,17 +113,26 @@ function deal() {
         if (dealerValues.includes(1) && dealerSum < 12) {
             dealerSum += 10
         }
+    playerSumEl.textContent = 'Player: ' + playerSum
+    dealerSumEl.textContent = 'Dealer: ' + getValue(dealerCardOne) 
 
 //UPDATE PLAYER STATUS
-
-    if (playerSum < 22) {
-        isAlive = true
-    } else {
-        isAlive = false
+    if (playerSum > 21) {
+        isAlive = false;
+    }
+    if (playerSum === 21) {
+        hasBlackjack = true;
+    }
+    if (dealerSum === 21 && hasBlackjack === false) {
+        resultsEl.textContent = "Dealer has BlackJack..."
+        dealerCards.innerHTML = ""
+        dealerCards.innerHTML = `<img src="./images/${dealerCardOne}.jpg"/>`
+        dealerCards.innerHTML = `<img src="./images/${dealerCardTwo}.jpg"/>`
+        dealerSumEl.textContent = 'Dealer: ' + dealerSum 
     }
 
-    if (playerSum === 21) {
-        hasBlackjack = true
+    if (hasBlackjack === true & dealerSum !== 21) {
+        resultsEl.textContent = "BlackJack!"
     }
 }
 
@@ -134,24 +149,29 @@ function hit() {
 
         playerHand.push(newCard)
         playerValues.push(getValue(newCard))   
+        playerCards.innerHTML += `<img src="./images/${newCard}.jpg"/>`
 
         playerSum = sumPlayerHand()
         if (playerValues.includes(1) && playerSum < 12) {
             playerSum += 10
         }
-
-    } else {
-        console.log('you went over 21!')
-    }
-    if (playerSum < 22) {
-        isAlive = true
-    } else {
-        isAlive = false
+        playerSumEl.textContent = 'Player: ' + playerSum
+        if (playerSum > 21) {
+            isAlive = false;
+            stay()
+        }
+        if (playerSum === 21) {
+            stay()
+        }
     }
 }
 
 function stay() {
-    if (isAlive === true && hasBlackjack === false) {
+    dealerCards.innerHTML = ""
+    dealerCards.innerHTML += `<img src="./images/${dealerHand[0]}.jpg"/>`
+    dealerCards.innerHTML += `<img src="./images/${dealerHand[1]}.jpg"/>`
+
+    if (isAlive === true) {
         while (dealerSum < 17) {
             let newDealerCard = deck[randomIndex()]
             for (let x = 0; x < dealerHand.length; x++) {
@@ -163,8 +183,37 @@ function stay() {
             }
             dealerHand.push(newDealerCard)
             dealerValues.push(getValue(newDealerCard))
+            dealerCards.innerHTML += `<img src="./images/${newDealerCard}.jpg"/>`
             dealerSum = sumDealerHand()
         }
         
     }
+    if (dealerSum > 21 && isAlive === true) {
+        resultsEl.textContent = "Dealer Busts!"
+    } else if (playerSum > dealerSum && isAlive === true) {
+        resultsEl.textContent = "You Win!"
+    } else if (hasBlackjack === true && dealerSum !== 21) {
+        resultsEl.textContent = "Blackjack!"
+    } else if (playerSum === dealerSum) {
+        resultsEl.textContent = "Draw!"
+    } else {
+        resultsEl.textContent = "Dealer Wins"
+    }
+    dealerSumEl.textContent = 'Dealer: ' + dealerSum
+}
+
+function reset() {
+    isAlive = false;
+    hasBlackjack = false;
+    playerSum = 0;
+    dealerSum = 0;
+    playerHand = [];
+    dealerHand = [];
+    playerValues = [];
+    dealerValues = [];
+    dealerSumEl.textContent = "Dealer: " + dealerSum
+    playerSumEl.textContent = "Player: " + playerSum
+    resultsEl.textContent = ""
+    dealerCards.innerHTML = ""
+    playerCards.innerHTML = ""
 }

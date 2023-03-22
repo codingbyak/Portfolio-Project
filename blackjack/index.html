@@ -12,10 +12,25 @@
         <h1>BlackJack</h1>
     </header>
     <section class="table">
+        <div id="dealerCards">
 
+        </div>
+        <div id="sums">
+            <h2 id="dealerSum">Dealer: 0</h2>
+            <h2 id="playerSum">Player: 0</h2>
+        </div>
+        <div id="playerCards">
+
+        </div>
     </section>
     <section class="chips">
-
+        <button id="gameChoice" onclick="deal()">PLAY</button>
+        <button id="gameChoice" onclick="hit()">HIT ME</button>
+        <button id="gameChoice" onclick="stay()">STAY</button>
+        <button id="gameChoice" onclick="reset()">RESET</button>
+        <br>
+        <h1 id="resultsEl"></h1>
     </section>
+    <script src="./script.js"></script>
 </body>
 </html>
