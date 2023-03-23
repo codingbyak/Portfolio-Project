@@ -1,0 +1,1 @@
+This is my first Portfolio Project to showcase some of my programming abilities. The challenge was to design a responsive web site that uses HTML, CSS & JavaScript. I have also included two projects. They still need work but it is a small glimpse of what I can accomplish at the beginning of my self-learning path.
