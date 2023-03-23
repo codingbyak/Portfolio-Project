@@ -3,6 +3,8 @@ let dealerCards = document.getElementById('dealerCards')
 let playerSumEl = document.getElementById('playerSum')
 let dealerSumEl = document.getElementById('dealerSum')
 let resultsEl = document.getElementById('resultsEl')
+let chipCounterEl = document.getElementById('chipCount')
+let betAmountEl = document.getElementById('betAmount')
 let cardSuits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
 let cardFaces = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
 let deck = [];
@@ -14,6 +16,8 @@ let playerHand = [];
 let dealerHand = [];
 let playerValues = [];
 let dealerValues = [];
+let chipCount = 200
+let betAmount = 0
 
 for (let i = 0; i < cardSuits.length; i++) {
     for (let j = 0; j < cardFaces.length; j++) {
@@ -103,7 +107,7 @@ function deal() {
     playerCards.innerHTML += `<img src="./images/${playerCardOne}.jpg"/>`
     playerCards.innerHTML += `<img src="./images/${playerCardTwo}.jpg"/>`
     dealerCards.innerHTML += `<img src="./images/${dealerCardOne}.jpg"/>`
-    dealerCards.innerHTML += `<div></div>`
+    dealerCards.innerHTML += `<img src="./images/cardBack.jpg"/>`
 
     playerSum = sumPlayerHand()
     dealerSum = sumDealerHand()
@@ -122,17 +126,20 @@ function deal() {
     }
     if (playerSum === 21) {
         hasBlackjack = true;
+        stay()
     }
     if (dealerSum === 21 && hasBlackjack === false) {
         resultsEl.textContent = "Dealer has BlackJack..."
         dealerCards.innerHTML = ""
-        dealerCards.innerHTML = `<img src="./images/${dealerCardOne}.jpg"/>`
-        dealerCards.innerHTML = `<img src="./images/${dealerCardTwo}.jpg"/>`
-        dealerSumEl.textContent = 'Dealer: ' + dealerSum 
+        dealerCards.innerHTML += `<img src="./images/${dealerCardOne}.jpg"/>`
+        dealerCards.innerHTML += `<img src="./images/${dealerCardTwo}.jpg"/>`
+        dealerSumEl.textContent = 'Dealer: ' + dealerSum
+        stay()
     }
 
     if (hasBlackjack === true & dealerSum !== 21) {
         resultsEl.textContent = "BlackJack!"
+        stay()
     }
 }
 
@@ -171,7 +178,7 @@ function stay() {
     dealerCards.innerHTML += `<img src="./images/${dealerHand[0]}.jpg"/>`
     dealerCards.innerHTML += `<img src="./images/${dealerHand[1]}.jpg"/>`
 
-    if (isAlive === true) {
+    if (isAlive === true && hasBlackjack === false) {
         while (dealerSum < 17) {
             let newDealerCard = deck[randomIndex()]
             for (let x = 0; x < dealerHand.length; x++) {
@@ -190,14 +197,32 @@ function stay() {
     }
     if (dealerSum > 21 && isAlive === true) {
         resultsEl.textContent = "Dealer Busts!"
+        chipCount = chipCount + betAmount + betAmount
+        betAmount = 0
+        chipCounterEl.textContent = "$" + chipCount
+        betAmountEl.textContent = "$" + betAmount
     } else if (playerSum > dealerSum && isAlive === true) {
         resultsEl.textContent = "You Win!"
+        chipCount = chipCount + betAmount + betAmount
+        betAmount = 0
+        chipCounterEl.textContent = "$" + chipCount
+        betAmountEl.textContent = "$" + betAmount
     } else if (hasBlackjack === true && dealerSum !== 21) {
         resultsEl.textContent = "Blackjack!"
+        chipCount = chipCount + (betAmount * 2.5)
+        betAmount = 0
+        chipCounterEl.textContent = "$" + chipCount
+        betAmountEl.textContent = "$" + betAmount
     } else if (playerSum === dealerSum) {
         resultsEl.textContent = "Draw!"
+        chipCount = chipCount + betAmount
+        betAmount = 0
+        chipCounterEl.textContent = "$" + chipCount
+        betAmountEl.textContent = "$" + betAmount
     } else {
         resultsEl.textContent = "Dealer Wins"
+        betAmount = 0
+        betAmountEl.textContent = "$" + betAmount
     }
     dealerSumEl.textContent = 'Dealer: ' + dealerSum
 }
@@ -216,4 +241,32 @@ function reset() {
     resultsEl.textContent = ""
     dealerCards.innerHTML = ""
     playerCards.innerHTML = ""
+}
+
+function betFive() {
+    chipCount = chipCount - 5
+    betAmount = betAmount + 5
+    chipCounterEl.textContent = "$" + chipCount
+    betAmountEl.textContent = "$" + betAmount
+}
+
+function betTen() {
+    chipCount = chipCount - 10
+    betAmount = betAmount + 10
+    chipCounterEl.textContent = "$" + chipCount
+    betAmountEl.textContent = "$" + betAmount
+}
+
+function betTwentyFive() {
+    chipCount = chipCount - 25
+    betAmount = betAmount + 25
+    chipCounterEl.textContent = "$" + chipCount
+    betAmountEl.textContent = "$" + betAmount
+}
+
+function betFifty() {
+    chipCount = chipCount - 50
+    betAmount = betAmount + 50
+    chipCounterEl.textContent = "$" + chipCount
+    betAmountEl.textContent = "$" + betAmount
 }

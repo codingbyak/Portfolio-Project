@@ -21,27 +21,35 @@
         <nav>
             <ul>
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="projects.html">PROJECTS</a></li>
-                <li><a href="about.html">ABOUT ME</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#about">ABOUT ME</a></li>
+                <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
     </header>
-    <section class="about">
-        <img class="profile" src="profile.jpg" alt="personal profile photo">
+    <section class="about" id="about">
+        <div class="profilePhoto">
+            <img class="profile" src="profile.jpg" alt="personal profile photo">
+        </div>
         <div class="summary">
             <h2>Personal Summary</h2>
             <p>My name is Andrew Kennedy and I am a beginner computer programmer, self&ndash;taught. Most of my learning has been through Codecademy but I also learned a lot from other sites such as MDN, Scrimba, YouTube videos and Stack Overflow. My goal has been to learn enough to secure a job in the computer science field. I've always been interested in video games and from my projects, you will see I lean heavily toward developing game apps.</p>
             <p>So far, my education has been focusing on HTML, CSS and JavaScript.I feel that I have a strength in JavaScript. I enjoy creating functions and applying dynamic user activity to applications.</p>
         </div>
     </section>
-    <section class="all-projects">
+    <section class="all-projects" id="projects">
         <div class="project">
-            <a href="./Rock, Paper, Scissors/index.html" target="_blank"><img src="./images/RPSicon.png" alt="Rock, Paper, Scissors Icon"></a>
-            <a href="./Rock, Paper, Scissors/index.html" target="_blank">
-                <h3>Rock, Paper, Scissors</h3>
-            </a>
-            <p>This was originally a Codecademy project that I redesigned and added my own twist to. In this project, I worked with keyframes and animations in CSS. I also modified the DOM using JavaScript and created functions to run the game.</p>
+            <div class="projectIcon">
+                <a href="./Rock, Paper, Scissors/index.html" target="_blank"><img src="./images/RPSicon.png" alt="Rock, Paper, Scissors Icon"></a>
+            </div>
+            <div class="projectTitle">
+                <a href="./Rock, Paper, Scissors/index.html" target="_blank">
+                    <h3>Rock, Paper, Scissors</h3>
+                </a>
+            </div>
+            <div class="projectSummary">
+                <p>This was originally a Codecademy project that I redesigned and added my own twist to. In this project, I worked with keyframes and animations in CSS. I also modified the DOM using JavaScript and created functions to run the game.</p>
+            </div>
             <div class="tags">
                 <span class="skills">HTML</span>
                 <span class="skills">CSS</span>
@@ -49,32 +57,51 @@
             </div>
         </div>
         <div class="project">
-            <a href="./blackjack/index.html">
-            <img src="./images/Blackjack-icon.jpg" alt="BlackJack Icon">
-            <h3>BlackJack</h3>
-            </a>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium facere eos alias asperiores veniam! Officiis nihil nemo obcaecati sapiente ipsa!</p>
+            <div class="projectIcon">
+                <a href="./blackjack/index.html">
+                    <img src="./images/Blackjack-icon.jpg" alt="BlackJack Icon">
+                </a>
+            </div>
+            <div class="projectTitle">
+                <a href="./blackjack/index.html">
+                    <h3>BlackJack</h3>
+                </a>
+            </div>
+            <div class="projectSummary">
+                <p>This one was a lot of fun but certainly difficult. Making sure the game followed all the rules of Blackjack and creating the logic and functions took the better part of a day. After the game functionality was in place, everything else pieced together rather quickly for a second project.</p>
+            </div>
+            <div class="tags">
+                <span class="skills">HTML</span>
+                <span class="skills">CSS</span>
+                <span class="skills">JavaScript</span>
+            </div>
         </div>
-        <div class="project">
-            <img src="project-icon.png" alt="Project Icon">
-            <h3>Project 3</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium facere eos alias asperiores veniam! Officiis nihil nemo obcaecati sapiente ipsa!</p>
+    </section>
+    <section id="contact">
+        <div class="email">
+            <h3>Email:</h3>
+            <a href="mailto:andrewkennedy11@gmail.com">andrewkennedy11@gmail.com</a>
         </div>
+        <div class="business">
+            <h3>Currently Seeking Employment</h3>
+        </div>
+
     </section>
     <footer>
         <div class="social-media">
-            <img src="github.png" alt="github">
-            <a href="https://www.linkedin.com/in/andrew-kennedy-22734334/" target="_blank"><img src="linked-in.png" alt="Linked in"></a>
+            <a href="https://github.com/codingbyak" target="_blank"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/andrew-kennedy-22734334/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
         </div>
         <nav>
             <ul>
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="projects.html">PROJECTS</a></li>
-                <li><a href="about.html">ABOUT ME</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#about">ABOUT ME</a></li>
+                <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
     </footer>
     <script src="./script.js"></script>
+    <script src="https://kit.fontawesome.com/e771f6cf86.js" crossorigin="anonymous"></script>
 </body>
 </html>

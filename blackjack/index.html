@@ -11,25 +11,51 @@
     <header>
         <h1>BlackJack</h1>
     </header>
+
     <section class="table">
         <div id="dealerCards">
 
-        </div>
-        <div id="sums">
-            <h2 id="dealerSum">Dealer: 0</h2>
-            <h2 id="playerSum">Player: 0</h2>
-        </div>
+        </div>        
         <div id="playerCards">
 
         </div>
     </section>
+
+    <section class="results">
+        <div class="dealerSum">
+            <h2 id="dealerSum">Dealer: 0</h2>
+        </div>
+        <div class="playerSum">
+            <h2 id="playerSum">Player: 0</h2>
+        </div>
+        <div class="resultsMessage">
+            <h2 id="resultsEl"></h2>
+        </div>
+        
+    </section>
     <section class="chips">
-        <button id="gameChoice" onclick="deal()">PLAY</button>
-        <button id="gameChoice" onclick="hit()">HIT ME</button>
-        <button id="gameChoice" onclick="stay()">STAY</button>
-        <button id="gameChoice" onclick="reset()">RESET</button>
-        <br>
-        <h1 id="resultsEl"></h1>
+        <div class="playerChips">
+            <h2>You have </h2>
+            <h3 id="chipCount">$200</h3>
+        </div>
+        <div id="chips">
+            <button class="greenChip" onclick="betFive()">$5</button>
+            <button class="blueChip" onclick="betTen()"> $10</button>
+            <button class="redChip" onclick="betTwentyFive()">$25</button>
+            <button class="purpleChip" onclick="betFifty()">$50</button>
+        </div>
+        <div id="game">
+            <button id="gameChoice" onclick="deal()">PLAY</button>
+            <button id="gameChoice" onclick="hit()">HIT ME</button>
+            <button id="gameChoice" onclick="stay()">STAY</button>
+            <button id="gameChoice" onclick="reset()">RESET</button>
+            <br>
+            
+        </div>
+        <div class="bet">
+            <h2>Bet: </h2>
+            <h3 id="betAmount"> $0 </h3>
+        </div>
     </section>
     <script src="./script.js"></script>
 </body>
